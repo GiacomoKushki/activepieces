@@ -33,6 +33,7 @@ export enum QueueMode {
 export enum DatabaseType {
     POSTGRES = 'POSTGRES',
     SQLITE3 = 'SQLITE3',
+    MONGODB = 'MONGODB',
 }
 
 
@@ -43,7 +44,7 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [AppSystemProp.CLIENT_REAL_IP_HEADER]: 'x-real-ip',
     [AppSystemProp.CLOUD_AUTH_ENABLED]: 'true',
     [AppSystemProp.CONFIG_PATH]: path.join(os.homedir(), '.activepieces'),
-    [AppSystemProp.DB_TYPE]: DatabaseType.POSTGRES,
+    [AppSystemProp.DB_TYPE]: DatabaseType.MONGODB,
     [AppSystemProp.EDITION]: ApEdition.COMMUNITY,
     [AppSystemProp.APP_WEBHOOK_SECRETS]: '{}',
     [WorkerSystemProp.CONTAINER_TYPE]: ContainerType.WORKER_AND_APP,

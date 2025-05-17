@@ -60,6 +60,7 @@ import { WebhookSimulationEntity } from '../webhooks/webhook-simulation/webhook-
 import { WorkerMachineEntity } from '../workers/machine/machine-entity'
 import { createPostgresDataSource } from './postgres-connection'
 import { createSqlLiteDataSource } from './sqlite-connection'
+import { createMongoDataSource } from './mongo-connection'
 const databaseType = system.get(AppSystemProp.DB_TYPE)
 
 function getEntities(): EntitySchema<unknown>[] {
@@ -155,7 +156,9 @@ export const databaseConnection = () => {
     if (isNil(_databaseConnection)) {
         _databaseConnection = databaseType === DatabaseType.SQLITE3
             ? createSqlLiteDataSource()
-            : createPostgresDataSource()
+            : databaseType === DatabaseType.MONGODB
+                ? createMongoDataSource()
+                : createPostgresDataSource()
     }
     return _databaseConnection
 }
