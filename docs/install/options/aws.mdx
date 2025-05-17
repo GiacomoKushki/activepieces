@@ -29,7 +29,7 @@ $ pulumi up
 The template is setup to be somewhat flexible, supporting what could be a development or more production-ready configuration.
 The configuration options that are presented during stack configuration will allow you to optionally add any or all of:
 
-* PostgreSQL RDS instance. Opting out of this will use a local SQLite3 Db.
+* MongoDB Atlas instance. Opting out of this will use a local SQLite3 Db.
 * Single node Redis 7 cluster. Opting out of this will mean using an in-memory cache.
 * Fully qualified domain name with SSL. Note that the hosted zone must already be configured in Route 53. 
 Opting out of this will mean relying on using the application load balancer's url over standard HTTP to access your Activepieces deployment.
@@ -68,7 +68,7 @@ $ mkdir deploy-activepieces && cd deploy-activepieces
 $ pulumi new https://github.com/activepieces/activepieces/tree/main/deploy/pulumi
 ```
 
-This step will prompt you to create you stack and to populate a series of config options, such as whether or not to provision a PostgreSQL RDS instance or use SQLite3.
+This step will prompt you to create you stack and to populate a series of config options, such as whether or not to provision a MongoDB Atlas instance or use SQLite3.
 
 <Tip>
     Note: When choosing a stack name, use something descriptive like `activepieces-dev`, `ap-prod` etc. 
@@ -132,7 +132,7 @@ Congratulations! You have successfully deployed Activepieces into AWS using a lo
 ## Customising the deploy
 
 All of the current configuration options, as well as the low-level details associated with the provisioned services are fully customisable, as you would expect from any IaC. 
-For example, if you'd like to have three availability zones instead of two for the VPC, use an older version of Redis or add some additional security group rules for PostgreSQL, you can update all of these and more in the `index.ts` file inside the `deploy` folder.
+For example, if you'd like to have three availability zones instead of two for the VPC, use an older version of Redis or add some additional security group rules for MongoDB, you can update all of these and more in the `index.ts` file inside the `deploy` folder.
 
 Or maybe you'd still like to deploy the official Activepieces Docker image instead of a local build, but would like to change some of the services. Simply set the `deployLocalBuild` config option in the stack file to `false` and make whatever changes you'd like to the `index.ts` file.   
 

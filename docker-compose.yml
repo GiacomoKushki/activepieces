@@ -9,23 +9,19 @@ services:
     ports:
       - '8080:80'
     depends_on:
-      - postgres
+      - mongodb
       - redis
     env_file: .env
     volumes:
       - ./cache:/usr/src/app/cache
     networks:
       - activepieces
-  postgres:
-    image: 'postgres:14.4'
-    container_name: postgres
+  mongodb:
+    image: 'mongo:6.0'
+    container_name: mongodb
     restart: unless-stopped
-    environment:
-      - 'POSTGRES_DB=${AP_POSTGRES_DATABASE}'
-      - 'POSTGRES_PASSWORD=${AP_POSTGRES_PASSWORD}'
-      - 'POSTGRES_USER=${AP_POSTGRES_USERNAME}'
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongo_data:/data/db
     networks:
       - activepieces
   redis:
@@ -37,7 +33,7 @@ services:
     networks:
       - activepieces
 volumes:
-  postgres_data:
+  mongo_data:
   redis_data:
 networks:
   activepieces:

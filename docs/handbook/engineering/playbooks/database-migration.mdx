@@ -15,7 +15,7 @@ https://orkhan.gitbook.io/typeorm/docs/migrations
 
 ## Database Support
 
-- PostgreSQL
+- MongoDB
 - SQLite
 
 <Tip>
@@ -28,11 +28,11 @@ We support SQLite to simplify development and self-hosting. It's particularly he
 
 ## Editions
 
-- **Enterprise & Cloud Edition** (Must use PostgreSQL)
-- **Community Edition** (Can use PostgreSQL or SQLite)
+- **Enterprise & Cloud Edition** (Must use MongoDB)
+- **Community Edition** (Can use MongoDB or SQLite)
 
 <Tip>
-If you are generating a migration for an entity that will only be used in Cloud & Enterprise editions, you only need to create the PostgreSQL migration file. You can skip generating the SQLite migration.
+If you are generating a migration for an entity that will only be used in Cloud & Enterprise editions, you only need to create the MongoDB migration file. You can skip generating the SQLite migration.
 </Tip>
 
 
@@ -54,14 +54,10 @@ If you are generating a migration for an entity that will only be used in Cloud 
     AP_DATABASE_TYPE=SQLITE
     ```
 
-    For PostgreSQL migrations:
+    For MongoDB migrations:
     ```env
-    AP_DATABASE_TYPE=POSTGRES
-    AP_POSTGRES_DATABASE=activepieces
-    AP_POSTGRES_HOST=db
-    AP_POSTGRES_PORT=5432
-    AP_POSTGRES_USERNAME=postgres
-    AP_POSTGRES_PASSWORD=password
+    AP_DATABASE_TYPE=MONGODB
+    AP_MONGODB_URI=mongodb://db:27017/activepieces
     ```
   </Step>
 
@@ -77,7 +73,7 @@ If you are generating a migration for an entity that will only be used in Cloud 
     The command will generate a new migration file in `packages/server/api/src/app/database/migrations`. 
     Review the generated file and:
 
-    - For PostgreSQL migrations: Move it to `postgres-connection.ts`
+    - For MongoDB migrations: Move it to `mongo-connection.ts`
     - For SQLite migrations: Move it to `sqlite-connection.ts`
   </Step>
 
