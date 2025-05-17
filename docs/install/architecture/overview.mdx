@@ -18,13 +18,13 @@ This page focuses on describing the main components of Activepieces and focus ma
 - **UI**: Frontend written in React.
 
 **Third Party**:
-- **Postgres**: The main database for Activepieces.
+- **MongoDB**: The main database for Activepieces.
 - **Redis**: This is used to power the queue using [BullMQ](https://docs.bullmq.io/).
 
 ## Reliability & Scalability
 
 <Tip>
-Postgres and Redis availability is outside the scope of this documentation, as many cloud providers already implement best practices to ensure their availability.
+MongoDB and Redis availability is outside the scope of this documentation, as many cloud providers already implement best practices to ensure their availability.
 </Tip>
 
 - **Webhooks**:  
@@ -36,7 +36,7 @@ Postgres and Redis availability is outside the scope of this documentation, as m
 - **Flow Execution**:  
   Workers poll jobs from the queue. In the event of a spike, the flow execution will still work but may be delayed depending on the size of the spike.
 
-To scale Activepieces, you typically need to increase the replicas of either workers, the app, or the Postgres database. A small Redis instance is sufficient as it can handle thousands of jobs per second and rarely acts as a bottleneck.
+To scale Activepieces, you typically need to increase the replicas of either workers, the app, or the MongoDB database. A small Redis instance is sufficient as it can handle thousands of jobs per second and rarely acts as a bottleneck.
 
 ## Repository Structure
 

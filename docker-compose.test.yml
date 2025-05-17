@@ -8,12 +8,12 @@ services:
     user: "${UID}:${GID}"
     command: /bin/sh -c "npm_config_cache=/usr/src/app/.npm-cache npx nx run-tests backend"
 
-  postgres:
+  mongodb:
     extends:
       file: docker-compose.dev.yml
-      service: postgres
+      service: db
     ports:
-     - "5432:5432"
+     - "27017:27017"
 
   redis:
     extends:
@@ -23,7 +23,7 @@ services:
      - "6379:6379"
 
 volumes:
-  postgres_data_dev:
+  mongo_data_dev:
   redis_data_dev:
 
 networks:

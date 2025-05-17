@@ -12,7 +12,7 @@ Activepieces is designed to be memory-intensive rather than CPU-intensive. A mod
 
 | Component           | Memory (RAM) | CPU Cores | Notes                                                                 |
 |---------------------|--------------|-----------|-----------------------------------------------------------------------|
-| PostgreSQL          | 1 GB         | 1         |                                                                       |
+| MongoDB          | 1 GB         | 1         |                                                                       |
 | Redis               | 1 GB         | 1         |                                                                       |
 | Activepieces        | 8 GB         | 2         | For high availability, consider deploying across multiple machines. Set `FLOW_WORKER_CONCURRENCY` to `25` for optimal performance. |
 
@@ -26,13 +26,13 @@ The above recommendations are designed to meet the needs of the majority of use 
 
 Redis requires minimal scaling as it primarily stores jobs during processing. Activepieces leverages BullMQ, capable of handling a substantial number of jobs per second.
 
-### PostgreSQL
+### MongoDB
 
 <Tip>
 **Scaling Tip:** Since files are stored in the database, you can alleviate the load by configuring S3 storage for file management.
 </Tip>
 
-PostgreSQL is typically not the system's bottleneck.
+MongoDB is typically not the system's bottleneck.
 
 ### Activepieces Container
 
